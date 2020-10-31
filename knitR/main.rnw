@@ -1,0 +1,15 @@
+\documentclass[a4paper, 11pt]{article}
+
+\title{En construction, revenez plus tard}
+\author{Benjamin Chausse}
+
+\begin{document}
+\maketitle
+
+<<TEST>>=
+library(datasets)
+plot(iris)
+@
+
+\end{document}
+
