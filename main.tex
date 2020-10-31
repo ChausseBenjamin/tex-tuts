@@ -103,7 +103,8 @@
 %==============================================================================%
 
 \usepackage{graphicx}            % Pour insérer des images
-\usepackage{float}             % Pour facilement positionner des images
+\usepackage{float}               % Pour facilement positionner des images
+\usepackage[T1]{fontenc}         % Pour des charactères français compatibles
 \usepackage[french]{babel}       % Pour un formatage en français
 \usepackage[hidelinks]{hyperref} % Pour pouvoir clicker des éléments
 \usepackage{xcolor}              % Pour utiliser des couleurs
@@ -116,9 +117,6 @@
 
 % Préférence pour afficher du code (Ne t'en fais pas pour le tutoriel)
 \definecolor{codebackground}{HTML}{DFDFED}
-\newcommand{\command}[1]{
-  \colorbox{codebackground}{\scriptsize{\textbackslash}\texttt{#1}}
-}
 
 %==============================================================================%
 %-------------------------     Début du document     --------------------------%
@@ -147,20 +145,20 @@ avec ce pdf pour maximiser sa compréhension.
 \newpage
 
 % Créons la première section de notre document:
-\section{Formattage de base}
-Avant de se lancer dans les fonctions plus complexes de \LaTeX, il faut
-comprendre la base. Je vai commencer par expliquer la commande
-\command{command} pour éviter toute confusion. C'est une commande que j'ai créé
-(dans la section "Autre" du préambule) afin de me faciliter la tâche dans ce
-document. Elle sert à formatter le look de certaines des commandes qui
-apparaissent textuellement dans le pdf afin qu'elle soit surlignées et qu'elles
-aient une typographie différente (comme du code).
+\section{Formattage de base} Avant de se lancer dans les fonctions plus
+complexes de \LaTeX, il faut comprendre la base. Je vai commencer par expliquer
+la commande \verb+\verb+ pour éviter toute confusion. C'est une fonction
+servant à exprimer une commande \LaTeX dans le pdf final sans qu'elle ne
+s'exécute lorsque je l'écris afin de me faciliter la tâche dans l'écriture de
+ce document. Elle formate aussi le look de certaines des commandes qui
+apparaissent textuellement dans le pdf afin qu'elles aient une typographie
+différente (comme du code), et par conséquent, plus apparentes.
 
 Bon, maintenant à l'essentiel. Comme tu l'as vu, pour commencer un nouvelle
-secion, tu utilise la commande \command{section}. Elle sont numérotés
+secion, tu utilise la commande \verb+\section+. Elle sont numérotés
 automatiquement et sont automatiquement placées dans la table des matières.
 Il est possible d'ajoutter deux dimensions supplémentaire aux document avec
-les commandes \command{subsection} et \command{subsubsection} comme suit:
+les commandes \verb+\subsection+ et \verb+\subsubsection+ comme suit:
 
 \subsection{Ceci est une sous-section}
 \subsubsection{Ceci est une sous-sous-section}
@@ -170,20 +168,20 @@ d'un paragraphe.
 
 \subsection{Formatage dans un paragraphe}
 
-J'aimerais mentionner la commande \command{\textbackslash}. Celle-ci de
+J'aimerais mentionner la commande \verb+\textbackslash+. Celle-ci de
 permet d'exécuter un retour à la ligne. Ceux-ci sont utile pour accentuer la
 distance entre deux paragraphe. \\
 
 Pour écrire du texte en gras, il est possible d'utiliser la commande
-\command{textbf}. En voici \textbf{un exemple}. Il est aussi possible
-d'écrire du texte en italique avec \command{textit} comme tu le
+\verb+\textbf+. En voici \textbf{un exemple}. Il est aussi possible
+d'écrire du texte en italique avec \verb+\textit+ comme tu le
 \textit{vois ici}. Il peut aussi être intéressant d'avoir des listes numérotés
 dans un document. Cela peut être fait avec les balises
-\command{begin\{enumerate\}} et \command{end\{enumerate\}}:
+\verb+\begin{enumerate}+ et \verb+\end{enumerate}+:
 
 \begin{enumerate}
   \item Premier éléments
-  \item Chaque élément commence par \command{item}
+  \item Chaque élément commence par \verb+\item+
   \item Troisième élément
   \item Cela permet d'avoir des
     éléments qui s'étalent
@@ -201,8 +199,8 @@ Les listes non-numérotées sont assez similaires. On n'a qu'à remplacer
 \end{itemize}
 
 Une dernière commande assez importante à mon avis est celle qui permet de
-centrer certains éléments. Tu le fais avec les balises \command{begin\{center\}}
-et \command{end\{center\}}
+centrer certains éléments. Tu le fais avec les balises \verb+\begin{center}+
+et \verb+\end{center}+
 
 \begin{center}
 Prends cette phrase comme exemple.
@@ -221,8 +219,8 @@ au beau milieu d'un paragraphe, comme par exemple $E=mc^2$, tu peux le faire
 
 \subsubsection{Les équations simples}
 Parfois tu peux vouloir donner à une équation un peux plus d'inportance.
-Alors, tu peux la mettre dans la banière \command{begin\{equation\}},
-\command{end\{equation\}}. Elle sera alors sortie du paragraphe et indexée
+Alors, tu peux la mettre dans la banière \verb+\begin{equation}+,
+\verb+\end{equation}+. Elle sera alors sortie du paragraphe et indexée
 à l'aide d'un numéro entre parenthèses (à droite). Par exemple:
 
 \begin{equation}
@@ -260,30 +258,30 @@ signes d'égalité sur la même ligne:
 \subsubsection{Symboles grecs (fais attention aux majuscules)}
 
 \begin{itemize}
-  \item \command{Delta}: $\Delta$
-  \item \command{delta}: $\delta$
-  \item \command{Gamma}: $\Gamma$
-  \item \command{gamma}: $\gamma$
-  \item \command{theta}: $\theta$
-  \item \command{pi}   : $\pi$
+  \item \verb+\Delta+: $\Delta$
+  \item \verb+\delta+: $\delta$
+  \item \verb+\Gamma+: $\Gamma$
+  \item \verb+\gamma+: $\gamma$
+  \item \verb+\theta+: $\theta$
+  \item \verb+\pi+   : $\pi$
 \end{itemize}
 
 \subsubsection{Outils mathématiques}
 
 \begin{itemize}
-  \item \command{a\textasciicircum\{exp\}}:
+  \item \verb+a^{exp}+:
       $a^{exp}$
-  \item \command{a\textunderscore\{indice\}}:
+  \item \verb+a_{indice}+:
       $a_{indice}$
-  \item \command{dfrac\{numerateur\}\{denominateur\}}:
+  \item \verb+\dfrac{numerateur}{denominateur}+:
       $\dfrac{numerateur}{denominateur}$
-  \item \command{sqrt\{racine\}}:
+  \item \verb+\sqrt{racine}+:
       $\sqrt{racine}$
-  \item \command{int\textunderscore\{min\}\textasciicircum\{max\}\{interieur\}}:
+  \item \verb+\int_{min}^{max}{interieur}+:
       $\int_{min}^{max}{interieur}$
-  \item \command{left( interieur \textbackslash right)}:
+  \item \verb+\left(interieur\right)+:
       $\left(interieur\right)$
-  \item \command{textrm\{texte normal\}}:
+  \item \verb+\textrm{texte normal}+:
       $\textrm{texte normal}$
 \end{itemize}
 
@@ -297,8 +295,8 @@ esthétique et soient faciles à répérer.
 
 Un des floats les plus facile à utiliser est la figure. Elle ne contient
 qu'une image et son titre (qui est numéroté). Pour afficher un titre la
-commande \command{caption\{\}}. Il est possible de faire référence à une
-figure en utilisant la commande \command{label\{\}} pour lui donner un
+commande \verb+\caption{}+. Il est possible de faire référence à une
+figure en utilisant la commande \verb+\label{}+ pour lui donner un
 identifiant. Prends cet exemple:
 
 \begin{figure}[H]
@@ -322,7 +320,7 @@ l'ordinateur), de deux chose:
   (bref, une information qui la rend unique, facile à citer).
 \end{enumerate}
 Pour utiliser la référence que je me suis donné, je peux utiliser la commande
-\command{ref\{\}}. Ainsi, je peux écrire:
+\verb+\ref{}+. Ainsi, je peux écrire:
 
 \begin{center}
 Comme on le voit dans la figure \ref{fig:xkcd}, les priorités de notre société
@@ -330,7 +328,7 @@ ne sont pas toujours les meilleurs\ldots
 \end{center}
 
 Tu peux voir dans le fichier ``.tex'' original que le numéro un s'est écrit
-automatiquement avec la commande \command{ref\{fig:xkcd\}}. Le numéro s'ajuste
+automatiquement avec la commande \verb+\ref{fig:xkcd}+. Le numéro s'ajuste
 automatiquement si le numéro de la figure change.
 
 \subsection{Les tableaux}
